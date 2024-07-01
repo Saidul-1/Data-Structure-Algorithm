@@ -23,8 +23,6 @@ void factCalc() {
     invFact[i] = (invFact[i+1]*(i+1))%MOD;
   }
 }
-int nCr() {
-  int n, r;
-  cin >> n >> r;
-  return (fact[n]*invFact[r]*invFact[n-r])%MOD;
+int nCr(int n, int r) {
+  return (fact[n]*((invFact[r]*invFact[n-r])%MOD))%MOD;
 }
