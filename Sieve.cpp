@@ -1,16 +1,17 @@
 vector<int>prime;
-void sieve(int n){
-	int i,j,x=sqrt(n);
-	vector<bool>tmp(n+1,false);
-	for(i=4;i<=n;i+=2){tmp[i]=true;}
-	for(i=3;i<=x;i+=2){
-		if(tmp[i]){continue;}
-		for(j=i*i;j<=n;j+=i){
-			tmp[j]=true;
-		}
-	}
-	prime.push_back(2);
-	for(i=3;i<=n;i+=2){
-		if(!tmp[i]){prime.push_back(i);}
-	}
+void sieve(int n) {
+  vector<bool>check(n+1, true);
+  int limit = sqrt(n)+1;
+  for(int i = 3; i <= limit; i += 2) {
+    if(check[i] == false) continue;
+    for(int j = i*i; j <= n; j += i) {
+        check[j] = false;
+    }
+  }
+  prime.push_back(2);
+  for(int i = 3; i <= n; i += 2) {
+    if(check[i] == true) {
+      prime.push_back(i);
+    }
+  }
 }
